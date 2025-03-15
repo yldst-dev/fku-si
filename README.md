@@ -10,6 +10,8 @@ YouTube, YouTube Music, Spotify 공유 링크에서 추적 파라미터(si)를 �
 
 ## 설치 및 실행
 
+### 옵션 1: 직접 실행
+
 1. Rust와 Cargo가 설치되어 있어야 합니다.
 2. 환경 변수 파일을 설정합니다:
    - `.env.example` 파일을 `.env`로 복사합니다.
@@ -24,6 +26,39 @@ YouTube, YouTube Music, Spotify 공유 링크에서 추적 파라미터(si)를 �
    ```bash
    cargo build --release
    ./target/release/fku-si
+   ```
+
+### 옵션 2: Docker로 실행
+
+1. Docker와 Docker Compose가 설치되어 있어야 합니다.
+2. 환경 변수 파일을 설정합니다:
+   ```bash
+   cp .env.example .env
+   # .env 파일을 편집하여 TELOXIDE_TOKEN에 봇 토큰을 입력하세요
+   ```
+
+3. Docker Compose를 사용하여 빌드하고 실행합니다:
+   ```bash
+   # 빌드 및 실행
+   docker-compose up -d
+   
+   # 로그 확인
+   docker-compose logs -f
+   
+   # 중지
+   docker-compose down
+   ```
+
+4. 또는 Docker 명령어로 직접 빌드하고 실행할 수 있습니다:
+   ```bash
+   # 이미지 빌드
+   docker build -t fku-si .
+   
+   # 컨테이너 실행
+   docker run -d --name fku-si -v $(pwd)/.env:/app/.env:ro --restart unless-stopped fku-si
+   
+   # 로그 확인
+   docker logs -f fku-si
    ```
 
 ## 로깅 레벨 설정

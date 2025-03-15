@@ -1,0 +1,24 @@
+# Git
+.git
+.gitignore
+
+# Rust
+target/
+**/*.rs.bk
+
+# Environment
+.env
+
+# OS specific
+.DS_Store
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker specific
+Dockerfile
+docker-compose.yml
+.dockerignore 
